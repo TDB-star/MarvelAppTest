@@ -39,6 +39,7 @@
 		5D2C196E27EB0DE40036BC44 /* EventSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C196D27EB0DE40036BC44 /* EventSummary.swift */; };
 		5D2C197227EB2EDC0036BC44 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C197127EB2EDC0036BC44 /* ComicViewModel.swift */; };
 		5D2C197427EB62510036BC44 /* ComicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */; };
+		5D93966327EB7DCE0006470F /* MarvelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D93966227EB7DCE0006470F /* MarvelApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		5D2C196D27EB0DE40036BC44 /* EventSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummary.swift; sourceTree = "<group>"; };
 		5D2C197127EB2EDC0036BC44 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCellViewModel.swift; sourceTree = "<group>"; };
+		5D93966227EB7DCE0006470F /* MarvelApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				5D2C193A27E8D8C10036BC44 /* imageManager.swift */,
+				5D93966227EB7DCE0006470F /* MarvelApi.swift */,
 				5D2C193527E89EC70036BC44 /* NetworkAPIManager.swift */,
 			);
 			path = Services;
@@ -285,6 +288,7 @@
 				5D2C195A27EA4FBB0036BC44 /* ComicDate.swift in Sources */,
 				5D2C193E27E8D9050036BC44 /* CharacterViewModel.swift in Sources */,
 				5D2C194C27EA402B0036BC44 /* ComicDataWrapper.swift in Sources */,
+				5D93966327EB7DCE0006470F /* MarvelApi.swift in Sources */,
 				5D2C196427EA56220036BC44 /* CharacterList.swift in Sources */,
 				5D2C196027EA53E60036BC44 /* CreatorList.swift in Sources */,
 				5D2C193B27E8D8C10036BC44 /* imageManager.swift in Sources */,

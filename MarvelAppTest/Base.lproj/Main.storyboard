@@ -66,7 +66,18 @@
                             <outlet property="delegate" destination="Isw-Ca-Xw7" id="McJ-FW-K71"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Marvel" largeTitleDisplayMode="always" id="QfH-9o-i0Z"/>
+                    <navigationItem key="navigationItem" title="Marvel" largeTitleDisplayMode="always" id="QfH-9o-i0Z">
+                        <barButtonItem key="leftBarButtonItem" title="Prev" id="BuS-lQ-WAB">
+                            <connections>
+                                <action selector="updateData:" destination="Isw-Ca-Xw7" id="FRs-IU-6Az"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="Next" id="XWw-At-NMH">
+                            <connections>
+                                <action selector="updateData:" destination="Isw-Ca-Xw7" id="7bY-3M-N6E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qz-g4-Q1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

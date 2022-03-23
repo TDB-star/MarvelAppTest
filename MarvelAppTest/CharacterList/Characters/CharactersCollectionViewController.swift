@@ -9,7 +9,8 @@ import UIKit
 
 private let reuseIdentifier = "CharacterListViewCell"
 
-class CharactersCollectionViewController: UICollectionViewController {
+class CharactersCollectionViewController: UICollectionViewController, DidFinishLoadDelegate {
+   
     
     private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     private let itemsPerRow: CGFloat = 2
@@ -24,23 +25,42 @@ class CharactersCollectionViewController: UICollectionViewController {
     
     private var comicsViewModel: ComicListViewModelProtocol! {
         didSet {
-            comicsViewModel.fetchComics {
-                self.collectionView.reloadData()
-            }
+//            comicsViewModel.fetchComics {
+//                self.collectionView.reloadData()
+//            }
+//            comicsViewModel.loadComics {
+//                self.collectionView.reloadData()
+//            }
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         comicsViewModel = ComicListViewModel()
+        comicsViewModel.loadComics()
+        comicsViewModel.delegate = self
+        print(comicsViewModel.getNumberOfComics())
        //viewModel = CharacterListViewModel()
         
     
     }
 
-
+    func didFinishLoad() {
+        collectionView.reloadData()
+    }
+    
+    @IBAction func updateData(_ sender: UIBarButtonItem) {
+        comicsViewModel.loadNextPage()
+    }
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,8 +78,6 @@ class CharactersCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-
-    
 
 }
 
