@@ -1,24 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v6T-7W-jyu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Marvel-->
+        <scene sceneID="9uM-7h-rNI">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <collectionViewController id="Isw-Ca-Xw7" customClass="CharactersCollectionViewController" customModule="MarvelAppTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zhH-Uv-iBe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nHt-zm-vZE">
+                            <size key="itemSize" width="166" height="274"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterListViewCell" id="Pxs-hu-4Og" customClass="CharacterCollectionViewCell" customModule="MarvelAppTest" customModuleProvider="target">
+                                <rect key="frame" x="86" y="10" width="242" height="374"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kdh-BU-q87">
+                                    <rect key="frame" x="0.0" y="0.0" width="242" height="374"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n9M-Hy-Maj" customClass="CustomImageView" customModule="MarvelAppTest" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="242" height="319"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzf-yK-5xv">
+                                            <rect key="frame" x="8" y="327" width="226" height="39"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="39" id="lXw-rp-Bn5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="textColor" red="0.33333334329999997" green="0.26374761130000002" blue="0.32501743379999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="xzf-yK-5xv" secondAttribute="bottom" constant="8" id="HBP-d1-9bi"/>
+                                        <constraint firstAttribute="trailing" secondItem="n9M-Hy-Maj" secondAttribute="trailing" id="MEx-OQ-86h"/>
+                                        <constraint firstItem="xzf-yK-5xv" firstAttribute="leading" secondItem="kdh-BU-q87" secondAttribute="leading" constant="8" id="TXs-Px-bo9"/>
+                                        <constraint firstAttribute="trailing" secondItem="xzf-yK-5xv" secondAttribute="trailing" constant="8" id="UEQ-Uc-NhZ"/>
+                                        <constraint firstItem="n9M-Hy-Maj" firstAttribute="leading" secondItem="kdh-BU-q87" secondAttribute="leading" id="V6p-AQ-L3c"/>
+                                        <constraint firstItem="n9M-Hy-Maj" firstAttribute="top" secondItem="kdh-BU-q87" secondAttribute="top" id="jTp-ym-iuf"/>
+                                        <constraint firstItem="xzf-yK-5xv" firstAttribute="top" secondItem="n9M-Hy-Maj" secondAttribute="bottom" constant="8" id="mtH-uC-ncK"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="242" height="374"/>
+                                <connections>
+                                    <outlet property="characterImageView" destination="n9M-Hy-Maj" id="62f-nT-qhn"/>
+                                    <outlet property="characterNameLabel" destination="xzf-yK-5xv" id="b2c-5j-euG"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Isw-Ca-Xw7" id="vpD-81-Dcf"/>
+                            <outlet property="delegate" destination="Isw-Ca-Xw7" id="McJ-FW-K71"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Marvel" largeTitleDisplayMode="always" id="QfH-9o-i0Z"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qz-g4-Q1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1355.072463768116" y="-248.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bsx-WZ-E2w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v6T-7W-jyu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="mkz-Qq-nRd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Isw-Ca-Xw7" kind="relationship" relationship="rootViewController" id="eJM-dR-OPa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYS-E7-uuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444.92753623188412" y="-248.4375"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
