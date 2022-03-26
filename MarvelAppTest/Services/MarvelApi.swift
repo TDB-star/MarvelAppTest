@@ -78,7 +78,7 @@ class MVLComicsService {
             completion(.failure(NSError(domain: "", code: 000, userInfo: ["message": "Can't build url"])))
             return
         }
-
+        print("Comics URL:\(url)")
         let task = sharedSession.dataTask(with: url) { (data, response, error) in
 
             if let error = error {
@@ -99,7 +99,7 @@ class MVLComicsService {
             DispatchQueue.main.async {
                 completion(.success(comicData.data))
             }
-
+            
             return
         }
         

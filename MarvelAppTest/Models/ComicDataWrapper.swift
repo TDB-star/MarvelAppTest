@@ -31,7 +31,7 @@ struct Comic: Codable {
     let series: SeriesSummary?
     let thumbnail: ComicImage
     let images: [ComicImage]
-    let dates: [ComicDate]
+    //let dates: [ComicDate]
     let characters: CharacterList?
     let stories: StoryList?
     let events: EventList?

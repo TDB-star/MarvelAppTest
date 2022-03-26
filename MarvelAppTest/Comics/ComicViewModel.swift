@@ -82,7 +82,7 @@ class ComicListViewModel: ComicListViewModelProtocol {
                 self.delegate?.didFinishLoad()
                 
             case let .failure(error):
-                print("DEBUG: *****\(error.localizedDescription)*****")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
