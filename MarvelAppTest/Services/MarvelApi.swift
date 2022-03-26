@@ -31,7 +31,7 @@ import Foundation
 //    }
 //    
 //}
-typealias CharacterDataWrapperCompletionResult = ((Result<ComicDataContainer, NSError>) -> Void)
+typealias ComicDataContainerCompletionResult = ((Result<ComicDataContainer, NSError>) -> Void)
 
 class MVLComicsService {
 
@@ -49,7 +49,7 @@ class MVLComicsService {
     
     private init() {}
     
-    func fetchComics(_ name: String? = nil, page: Int, completion: @escaping CharacterDataWrapperCompletionResult) {
+    func fetchComics(_ name: String? = nil, page: Int, completion: @escaping ComicDataContainerCompletionResult) {
         
         let timestamp = "\(Date().timeIntervalSince1970)"
         let hash = "\(timestamp)\(privateKey)\(apiKey)".md5Value
@@ -102,7 +102,7 @@ class MVLComicsService {
 
             return
         }
-
+        
         task.resume()
     }
 }

@@ -122,14 +122,5 @@ class NetworkApiManager {
         task.resume()
       
     }
-    
 }
 
-
-/*
-To use the offset idea you just have to put that as a parameter for the query. So when you call it you, actually, have to call 10 queries with the different offset parameter.
-
-https://gateway.marvel.com/v1/public/characters?ts=yourtsvalue&apikey=publickeyvalue&hash=hashvalue&limit=100&offset=0
-
-https://gateway.marvel.com/v1/public/characters?ts=yourtsvalue&apikey=publickeyvalue&hash=hashvalue&limit=100&offset=100
-*/

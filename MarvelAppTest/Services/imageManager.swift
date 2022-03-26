@@ -12,12 +12,6 @@ class ImageManager {
     
     private init() {}
     
-//    func fetchImageData(from url: String) -> Data? {
-//        guard let url = URL(string: url) else { return nil }
-//        guard let imageData = try? Data(contentsOf: url) else {return nil}
-//        return imageData
-//    }
-    
     func fetchImageDataToCache(from url: URL, completion: @escaping (Data, URLResponse) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let response = response else {
@@ -33,9 +27,6 @@ class ImageManager {
         .resume()
     }
 }
-
-
-
 
 class CustomImageView: UIImageView {
     
