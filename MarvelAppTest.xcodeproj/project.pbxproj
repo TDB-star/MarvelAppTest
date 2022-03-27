@@ -43,6 +43,9 @@
 		5D7D3CB727EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */; };
 		5D7D3CB927EDE779008CCA69 /* PagingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB827EDE779008CCA69 /* PagingControl.swift */; };
 		5D93966327EB7DCE0006470F /* MarvelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D93966227EB7DCE0006470F /* MarvelApi.swift */; };
+		5D97498327F0AC8800FB7B49 /* ComicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498227F0AC8800FB7B49 /* ComicDetailsViewController.swift */; };
+		5D97498527F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */; };
+		5D97498727F0BC7A00FB7B49 /* SectionTypeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,9 @@
 		5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGallaryCellViewModel.swift; sourceTree = "<group>"; };
 		5D7D3CB827EDE779008CCA69 /* PagingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingControl.swift; sourceTree = "<group>"; };
 		5D93966227EB7DCE0006470F /* MarvelApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApi.swift; sourceTree = "<group>"; };
+		5D97498227F0AC8800FB7B49 /* ComicDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsViewController.swift; sourceTree = "<group>"; };
+		5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselTableViewCell.swift; sourceTree = "<group>"; };
+		5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTypeViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +184,13 @@
 		5D2C196F27EB2E580036BC44 /* ComicDetails */ = {
 			isa = PBXGroup;
 			children = (
+				5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */,
 				5D7D3CB027EC79F2008CCA69 /* ComicDetailsViewModel.swift */,
+				5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */,
 				5D7D3CB227EC7A10008CCA69 /* ComicDetailViewController.swift */,
 				5D7D3CB427EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift */,
-				5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */,
+				5D97498227F0AC8800FB7B49 /* ComicDetailsViewController.swift */,
+				5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */,
 			);
 			path = ComicDetails;
 			sourceTree = "<group>";
@@ -273,6 +282,7 @@
 				5D2C196827EB0CAE0036BC44 /* StoryList.swift in Sources */,
 				5D2C195627EA4EF00036BC44 /* SeriesSummary.swift in Sources */,
 				5D7D3CB527EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift in Sources */,
+				5D97498527F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift in Sources */,
 				5D2C196627EB0B7A0036BC44 /* CharacterSummary.swift in Sources */,
 				5D2C196A27EB0D0A0036BC44 /* StorySummary.swift in Sources */,
 				5D2C197427EB62510036BC44 /* ComicCellViewModel.swift in Sources */,
@@ -281,9 +291,11 @@
 				5D2C195227EA4D120036BC44 /* TextObject.swift in Sources */,
 				5D2C194327E9F1050036BC44 /* Extentions.swift in Sources */,
 				5D2C191E27E899030036BC44 /* AppDelegate.swift in Sources */,
+				5D97498727F0BC7A00FB7B49 /* SectionTypeViewModelProtocol.swift in Sources */,
 				5D2C192027E899030036BC44 /* SceneDelegate.swift in Sources */,
 				5D7D3CB327EC7A10008CCA69 /* ComicDetailViewController.swift in Sources */,
 				5D2C195E27EA50DA0036BC44 /* ComicImage.swift in Sources */,
+				5D97498327F0AC8800FB7B49 /* ComicDetailsViewController.swift in Sources */,
 				5D2C195427EA4E680036BC44 /* Url.swift in Sources */,
 				5D2C196E27EB0DE40036BC44 /* EventSummary.swift in Sources */,
 				5D2C195C27EA50510036BC44 /* ComicPrice.swift in Sources */,

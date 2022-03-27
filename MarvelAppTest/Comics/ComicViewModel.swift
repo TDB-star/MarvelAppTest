@@ -19,9 +19,13 @@ protocol ComicListViewModelProtocol {
     func getNumberOfComics() -> Int
     func getComicCellViewModel(at indexPath: IndexPath) -> ComicCellViewModelProtocol
     func getComicDetailsViewModel(at indexPath: IndexPath) -> ComicDetailsViewModelProtocol
+    
+    func getSctionTypeViewModel(at indexPath: IndexPath) -> SectionTypeViewModelProtocol
 }
 
 class ComicListViewModel: ComicListViewModelProtocol {
+ 
+    
  
     weak var delegate: DidFinishLoadDelegate?
     
@@ -66,6 +70,11 @@ class ComicListViewModel: ComicListViewModelProtocol {
     func getComicDetailsViewModel(at indexPath: IndexPath) -> ComicDetailsViewModelProtocol {
         let comic = comics[indexPath.item]
         return ComicDetailsViewModel(comic: comic)
+    }
+    
+    func getSctionTypeViewModel(at indexPath: IndexPath) -> SectionTypeViewModelProtocol {
+        let comic = comics[indexPath.item]
+        return SectionTypeViewModel(comic: comic)
     }
     
     private func loadComics(at page: Int) {

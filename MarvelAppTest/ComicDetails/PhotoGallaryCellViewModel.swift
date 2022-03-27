@@ -8,14 +8,12 @@
 import Foundation
 
 protocol PhotoGallaryCellViewModelProtocol {
-   // var imageData: Data? { get }
     var imageUrl: String { get }
     
     init(image: ComicImage)
 }
 
 class PhotoGallaryCellViewModel: PhotoGallaryCellViewModelProtocol {
-   // var imageData: Data?
     
     private var image: ComicImage
     

@@ -10,6 +10,7 @@ import Foundation
 protocol ComicDetailsViewModelProtocol {
     
     var comicName: String { get }
+    var date : String { get }
     func getNumberOgPhotos() -> Int
     func getItemPhotoGallaryCellViewModel(at indexPath: IndexPath) -> PhotoGallaryCellViewModelProtocol
     
@@ -17,7 +18,8 @@ protocol ComicDetailsViewModelProtocol {
 }
 
 class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
-  
+   
+    
     private var comic: Comic
     
     var comicName: String {
@@ -26,6 +28,10 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
     
     func getNumberOgPhotos() -> Int {
         comic.images.count
+    }
+    
+    var date: String {
+        comic.dates[0].date.asString(style: .long)
     }
     
     
@@ -37,6 +43,4 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
         let photos = comic.images[indexPath.item]
         return PhotoGallaryCellViewModel(image: photos)
     }
-    
-    
 }

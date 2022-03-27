@@ -107,7 +107,9 @@ class NetworkApiManager {
             }
            
             do {
+
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
                 let marvelComics = try decoder.decode(ComicDataWrapper.self, from: data)
                 let comics = marvelComics.data 
                 

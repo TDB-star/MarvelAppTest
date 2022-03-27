@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Combine
 
 class ComicDetailsViewController: UIViewController {
     
@@ -16,8 +15,6 @@ class ComicDetailsViewController: UIViewController {
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsViewController.configureCollectionViewLayout())
     
     var detailsViewModel: ComicDetailsViewModelProtocol!
-    private let pagingInfoSubject = PassthroughSubject<PagingInfo, Never>()
-
     
     private lazy var pageControl: UIPageControl = {
         let control = UIPageControl()
@@ -32,12 +29,36 @@ class ComicDetailsViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.text = "Test Adress title"
         return label
     }()
+    
+    private let publishedLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.text = "Published:"
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.textColor = .gray
+        label.text = "March 23, 2022"
+        return label
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +79,11 @@ extension ComicDetailsViewController {
         view.backgroundColor = .white
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 0
         
        
         titleLabel.text = detailsViewModel.comicName
+        dateLabel.text = detailsViewModel.date
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     
 
@@ -72,14 +94,15 @@ extension ComicDetailsViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(PhotoGallaryCollectionViewCell.self, forCellWithReuseIdentifier: PhotoGallaryCollectionViewCell.identifier)
-        
     }
     
     func layout() {
         
         view.addSubview(collectionView)
-        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(publishedLabel)
+        stackView.addArrangedSubview(dateLabel)
         
+        view.addSubview(titleLabel)
         view.addSubview(stackView)
         view.addSubview(pageControl)
         view.addSubview(pageControl)
@@ -89,10 +112,16 @@ extension ComicDetailsViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 250),
+            
             pageControl.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor),
             pageControl.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
             pageControl.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: collectionView.bottomAnchor, multiplier: 2),
+            
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: collectionView.bottomAnchor, multiplier: 2),
+            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 2),
+            
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 2),
             stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2)
         ])

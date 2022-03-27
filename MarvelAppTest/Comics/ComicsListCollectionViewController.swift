@@ -61,10 +61,14 @@ extension ComicsListCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let comic = comicsViewModel.getComicDetailsViewModel(at: indexPath)
-        let comicController = ComicDetailsViewController()
-        comicController.detailsViewModel = comic
-        navigationController?.pushViewController(comicController, animated: true)
+//        let comic = comicsViewModel.getComicDetailsViewModel(at: indexPath)
+//        let comicController = ComicDetailsViewController()
+//        comicController.detailsViewModel = comic
+//        navigationController?.pushViewController(comicController, animated: true)
+        let comic = comicsViewModel.getSctionTypeViewModel(at: indexPath)
+        let controller = ComicDetailsViewControllerDemo()
+        controller.viewModel = comic
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }

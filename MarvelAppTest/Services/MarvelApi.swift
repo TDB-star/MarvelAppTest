@@ -91,7 +91,10 @@ class MVLComicsService {
                 return
             }
 
-            guard let comicData = try? JSONDecoder().decode(ComicDataWrapper.self, from: data) else {
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            guard let comicData = try? decoder.decode(ComicDataWrapper.self, from: data) else {
                 completion(.failure(NSError(domain: "", code: 000, userInfo: ["message": "Can't parse json"])))
                 return
             }
