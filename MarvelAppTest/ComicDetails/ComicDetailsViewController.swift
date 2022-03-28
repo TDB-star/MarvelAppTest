@@ -83,6 +83,7 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         case .comicInfo:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "test"
+            return cell
         case .comicDetails:
             break
         case .variantCover:

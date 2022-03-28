@@ -14,13 +14,14 @@ class PhotoCarouselTableViewCell: UITableViewCell {
     var viewModel: ComicDetailsViewModelProtocol!
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsViewController.configureCollectionViewLayout())
+    
+
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureCollectionView()
         layout()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -38,11 +39,16 @@ class PhotoCarouselTableViewCell: UITableViewCell {
     private func layout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(collectionView)
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            
+            
+            
+            
         ])
     }
     
@@ -74,7 +80,7 @@ class PhotoCarouselTableViewCell: UITableViewCell {
 extension PhotoCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.getNumberOgPhotos()
+        viewModel.getNumberOfPhotos()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,4 +92,7 @@ extension PhotoCarouselTableViewCell: UICollectionViewDataSource, UICollectionVi
 //    func configure(_ with: ) {
 //        
 //    }
+    
 }
+
+

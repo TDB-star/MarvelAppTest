@@ -64,7 +64,7 @@ class ComicDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         pageControl.currentPage = 0
-        pageControl.numberOfPages = detailsViewModel.getNumberOgPhotos()
+        pageControl.numberOfPages = detailsViewModel.getNumberOfPhotos()
         
         style()
         layout()
@@ -104,7 +104,6 @@ extension ComicDetailsViewController {
         
         view.addSubview(titleLabel)
         view.addSubview(stackView)
-        view.addSubview(pageControl)
         view.addSubview(pageControl)
         
         NSLayoutConstraint.activate([
@@ -153,7 +152,7 @@ extension ComicDetailsViewController {
 
 extension ComicDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        detailsViewModel.getNumberOgPhotos()
+        detailsViewModel.getNumberOfPhotos()
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoGallaryCollectionViewCell.identifier, for: indexPath) as! PhotoGallaryCollectionViewCell

@@ -11,7 +11,7 @@ protocol ComicDetailsViewModelProtocol {
     
     var comicName: String { get }
     var date : String { get }
-    func getNumberOgPhotos() -> Int
+    func getNumberOfPhotos() -> Int
     func getItemPhotoGallaryCellViewModel(at indexPath: IndexPath) -> PhotoGallaryCellViewModelProtocol
     
     init(comic: Comic)
@@ -26,7 +26,7 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
         comic.title ?? ""
     }
     
-    func getNumberOgPhotos() -> Int {
+    func getNumberOfPhotos() -> Int {
         comic.images.count
     }
     
