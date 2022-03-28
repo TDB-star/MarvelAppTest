@@ -7,11 +7,11 @@
 
 import UIKit
 
-enum SectionType {
-    case comicPhotos(with: ComicDetailsViewModelProtocol)
+enum SectionType: Int, CaseIterable {
+    case comicPhotos
     case comicInfo
     case comicDetails
-    case variantCover
+    case comicDescription
 }
 
 class ComicDetailsViewControllerDemo: UIViewController {
@@ -23,21 +23,12 @@ class ComicDetailsViewControllerDemo: UIViewController {
     }()
     
     var viewModel: SectionTypeViewModelProtocol!
-    private var sections = [SectionType]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupTableView()
-        configureSection()
         
-    }
-    
-    private func configureSection() {
-        sections.append(.comicPhotos(with: viewModel.getPhotoSectionType()))
-        sections.append(.comicInfo)
-        sections.append(.comicDetails)
-        sections.append(.variantCover)
     }
 }
 
@@ -64,15 +55,49 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         ])
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
+        SectionType.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sections = SectionType(rawValue: section)
+        var title = ""
+        
+        switch sections {
+        case .comicPhotos:
+            title = ""
+        case .comicInfo:
+            title = ""
+        case .comicDetails:
+            title = "Creators:"
+        case .comicDescription:
+            title = "Description:"
+        case .none:
+            break
+        }
+        
+        return title
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        let sections = SectionType(rawValue: section)
+        var numberOfRows = 0
+        switch sections {
+        case .comicPhotos:
+            numberOfRows = 1
+        case .comicInfo:
+            numberOfRows = 1
+        case .comicDetails:
+            numberOfRows = 1
+        case .comicDescription:
+            numberOfRows = viewModel.comicDescription.count
+        case .none:
+            break
+        }
+       return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionType = sections[indexPath.section]
+        let sectionType = SectionType.allCases[indexPath.section]
         switch sectionType {
         case .comicPhotos:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotoCarouselTableViewCell.identifier, for: indexPath) as? PhotoCarouselTableViewCell
@@ -93,16 +118,20 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             }
             cell.viewModel = viewModel.getComicInfoSectionType()
             return cell
-        case .variantCover:
-            break
+        case .comicDescription:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let description = viewModel.comicDescription[indexPath.row]
+            var content = cell.defaultContentConfiguration()
+            content.text = description.language
+            content.secondaryText = description.text
+            cell.contentConfiguration = content
+            return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let sectionType = sections[indexPath.section]
+        let sectionType = SectionType.allCases[indexPath.section]
         
         switch sectionType {
         case .comicPhotos:
@@ -111,10 +140,11 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             return 140
         case .comicDetails:
             return 120
-        case.variantCover:
+        case.comicDescription:
            return  UITableView.automaticDimension
         }
     }
 }
+
 
 

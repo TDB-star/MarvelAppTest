@@ -50,6 +50,7 @@
 		5D97498C27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */; };
 		5D97498E27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */; };
 		5D97499027F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */; };
+		5D97499227F1F39500FB7B49 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97499127F1F39500FB7B49 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsSectionTypeViewModel.swift; sourceTree = "<group>"; };
+		5D97499127F1F39500FB7B49 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */,
 				5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */,
 				5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */,
+				5D97499127F1F39500FB7B49 /* TableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				5D2C197227EB2EDC0036BC44 /* ComicViewModel.swift in Sources */,
 				5D2C196227EA55370036BC44 /* CreatorSummary.swift in Sources */,
 				5D2C195227EA4D120036BC44 /* TextObject.swift in Sources */,
+				5D97499227F1F39500FB7B49 /* TableViewCell.swift in Sources */,
 				5D2C194327E9F1050036BC44 /* Extentions.swift in Sources */,
 				5D2C191E27E899030036BC44 /* AppDelegate.swift in Sources */,
 				5D97498727F0BC7A00FB7B49 /* SectionTypeViewModelProtocol.swift in Sources */,

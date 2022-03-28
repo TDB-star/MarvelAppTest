@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SectionTypeViewModelProtocol {
+    var comicDescription: [TextObject] { get }
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol
     func getComicInfoSectionType() -> ComicDetailsViewModelProtocol
     func getComicDetailsSectionType() -> ComicDetailsViewModelProtocol
@@ -15,8 +16,13 @@ protocol SectionTypeViewModelProtocol {
 }
 
 class SectionTypeViewModel: SectionTypeViewModelProtocol {
+   
 
     private var comic: Comic
+    
+    var comicDescription: [TextObject] {
+        (comic.textObjects)?.compactMap({$0}) ?? []
+    }
     
     required init(comic: Comic) {
         self.comic = comic
@@ -33,5 +39,6 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     func getComicDetailsSectionType() -> ComicDetailsViewModelProtocol {
         ComicDetailsViewModel(comic: comic)
     }
+    
     
 }
