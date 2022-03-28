@@ -49,7 +49,8 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(PhotoCarouselTableViewCell.self, forCellReuseIdentifier: PhotoCarouselTableViewCell.identifier)
-        //
+        tableView.register(ComicInfoTableViewCell.self, forCellReuseIdentifier: ComicInfoTableViewCell.identifier)
+        tableView.register(ComicDetailsTableViewCell.self, forCellReuseIdentifier: ComicDetailsTableViewCell.identifier)
         //        tableView.rowHeight = AccountSummaryCell.rowHeight
         //tableView.tableFooterView = UIView()
     
@@ -81,11 +82,16 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             cell.viewModel = viewModel.getPhotoSectionType()
             return cell
         case .comicInfo:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "test"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicInfoTableViewCell.identifier, for: indexPath) as? ComicInfoTableViewCell else {
+                fatalError()
+            }
+            cell.viewModel = viewModel.getComicInfoSectionType()
             return cell
         case .comicDetails:
-            break
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicDetailsTableViewCell.identifier, for: indexPath) as? ComicDetailsTableViewCell else {
+                fatalError()
+            }
+            return cell
         case .variantCover:
             break
         }
@@ -101,12 +107,11 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         case .comicPhotos:
             return view.frame.size.width
         case .comicInfo:
-            return UITableView.automaticDimension
+            return 120
         case .comicDetails:
-            return UITableView.automaticDimension
+            return 80
         case.variantCover:
            return  UITableView.automaticDimension
-           
         }
     }
 }

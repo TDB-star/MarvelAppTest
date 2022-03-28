@@ -13,10 +13,10 @@ class PhotoCarouselTableViewCell: UITableViewCell {
     
     var viewModel: ComicDetailsViewModelProtocol!
     
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsViewController.configureCollectionViewLayout())
+//    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsViewController.configureCollectionViewLayout())
     
-
-
+    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: PhotoCarouselTableViewCell.configureCollectionViewLayout())
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -28,9 +28,7 @@ class PhotoCarouselTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func configureCollectionView() {
-      
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(PhotoGallaryCollectionViewCell.self, forCellWithReuseIdentifier: PhotoGallaryCollectionViewCell.identifier)
@@ -45,10 +43,6 @@ class PhotoCarouselTableViewCell: UITableViewCell {
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            
-            
-            
-            
         ])
     }
     
@@ -88,11 +82,6 @@ extension PhotoCarouselTableViewCell: UICollectionViewDataSource, UICollectionVi
         cell.viewModel = viewModel.getItemPhotoGallaryCellViewModel(at: indexPath)
         return cell
     }
-   
-//    func configure(_ with: ) {
-//        
-//    }
-    
 }
 
 
