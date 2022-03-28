@@ -11,7 +11,14 @@ class ComicDetailCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ComicDetailCollectionViewCell"
     
-    private lazy var titleLabel: UILabel = {
+    var viewModel: ComicDetailsSectionTypeProtocol! {
+        didSet {
+            creatorNameLabel.text = viewModel.creatorName
+            creatorRoleLabel.text = viewModel.creatorRole
+        }
+    }
+    
+    private lazy var creatorNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -22,7 +29,7 @@ class ComicDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var infoLabel: UILabel = {
+    private lazy var creatorRoleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -45,8 +52,8 @@ class ComicDetailCollectionViewCell: UICollectionViewCell {
      override init(frame: CGRect) {
          super.init(frame: frame)
          contentView.addSubview(stackView)
-         stackView.addArrangedSubview(titleLabel)
-         stackView.addArrangedSubview(infoLabel)
+         stackView.addArrangedSubview(creatorNameLabel)
+         stackView.addArrangedSubview(creatorRoleLabel)
      }
      
      required init?(coder: NSCoder) {

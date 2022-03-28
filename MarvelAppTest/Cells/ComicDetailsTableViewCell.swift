@@ -13,6 +13,8 @@ class ComicDetailsTableViewCell: UITableViewCell {
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsTableViewCell.configureCollectionViewLayout())
     
+    var viewModel: ComicDetailsViewModelProtocol!
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,7 +56,7 @@ class ComicDetailsTableViewCell: UITableViewCell {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 8, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 8, trailing: 16)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(42))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
@@ -70,11 +72,12 @@ class ComicDetailsTableViewCell: UITableViewCell {
 extension ComicDetailsTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        viewModel.getNumberOfComicCreators()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicDetailCollectionViewCell.identifier, for: indexPath) as! ComicDetailCollectionViewCell
+        cell.viewModel = viewModel.getComicDetailsSectionType(indexPath: indexPath)
         
         return cell
     }

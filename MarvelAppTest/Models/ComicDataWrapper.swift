@@ -32,6 +32,7 @@ struct Comic: Codable {
     let thumbnail: ComicImage
     let images: [ComicImage]
     let dates: [ComicDate]
+    let creators: CreatorList?
     let characters: CharacterList?
     let stories: StoryList?
     let events: EventList?

@@ -32,6 +32,7 @@ class PhotoCarouselTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(PhotoGallaryCollectionViewCell.self, forCellWithReuseIdentifier: PhotoGallaryCollectionViewCell.identifier)
+        collectionView.isPagingEnabled = true
     }
     
     private func layout() {

@@ -49,6 +49,7 @@
 		5D97498A27F1A87400FB7B49 /* ComicInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */; };
 		5D97498C27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */; };
 		5D97498E27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */; };
+		5D97499027F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsSectionTypeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */,
 				5D7D3CB027EC79F2008CCA69 /* ComicDetailsViewModel.swift */,
+				5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */,
 				5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */,
 				5D7D3CB227EC7A10008CCA69 /* ComicDetailViewController.swift */,
 				5D97498227F0AC8800FB7B49 /* ComicDetailsViewController.swift */,
@@ -323,6 +326,7 @@
 				5D7D3CB127EC79F2008CCA69 /* ComicDetailsViewModel.swift in Sources */,
 				5D2C196427EA56220036BC44 /* CharacterList.swift in Sources */,
 				5D2C196027EA53E60036BC44 /* CreatorList.swift in Sources */,
+				5D97499027F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift in Sources */,
 				5D2C193B27E8D8C10036BC44 /* imageManager.swift in Sources */,
 				5D97498A27F1A87400FB7B49 /* ComicInfoTableViewCell.swift in Sources */,
 				5D2C195027EA41540036BC44 /* Comic.swift in Sources */,

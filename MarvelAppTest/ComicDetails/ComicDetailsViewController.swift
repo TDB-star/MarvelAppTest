@@ -91,6 +91,7 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicDetailsTableViewCell.identifier, for: indexPath) as? ComicDetailsTableViewCell else {
                 fatalError()
             }
+            cell.viewModel = viewModel.getComicInfoSectionType()
             return cell
         case .variantCover:
             break
@@ -107,9 +108,9 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         case .comicPhotos:
             return view.frame.size.width
         case .comicInfo:
-            return 120
+            return 140
         case .comicDetails:
-            return 80
+            return 120
         case.variantCover:
            return  UITableView.automaticDimension
         }

@@ -12,14 +12,14 @@ protocol ComicDetailsViewModelProtocol {
     var comicName: String { get }
     var date : String { get }
     func getNumberOfPhotos() -> Int
+    func getNumberOfComicCreators() -> Int
     func getItemPhotoGallaryCellViewModel(at indexPath: IndexPath) -> PhotoGallaryCellViewModelProtocol
-    
+    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailsSectionTypeProtocol
     init(comic: Comic)
 }
 
 class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
-   
-    
+
     private var comic: Comic
     
     var comicName: String {
@@ -34,6 +34,16 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
         comic.dates[0].date.asString(style: .long)
     }
     
+    var comicCreators: [CreatorSummary] {
+        let creatorList = comic.creators
+        let creators = creatorList?.items
+        
+        return creators?.compactMap({$0}) ?? []
+    }
+    
+    func getNumberOfComicCreators() -> Int {
+        comicCreators.count
+    }
     
     required init(comic: Comic) {
         self.comic = comic
@@ -42,5 +52,10 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
     func getItemPhotoGallaryCellViewModel(at indexPath: IndexPath) -> PhotoGallaryCellViewModelProtocol {
         let photos = comic.images[indexPath.item]
         return PhotoGallaryCellViewModel(image: photos)
+    }
+    
+    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailsSectionTypeProtocol {
+        let creators = comicCreators[indexPath.item]
+        return ComicDetailsSectionType(creators: creators)
     }
 }
