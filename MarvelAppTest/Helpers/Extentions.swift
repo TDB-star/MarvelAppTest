@@ -5,8 +5,9 @@
 //  Created by Tatiana Dmitrieva on 22/03/2022.
 //
 
-import Foundation
+import UIKit
 import CommonCrypto
+
 
 extension String {
     func withReplacedCharacters(_ oldChar: String, by newChar: String) -> String {
@@ -55,4 +56,13 @@ extension Date {
     dateFormatter.dateStyle = style
     return dateFormatter.string(from: self)
   }
+}
+
+extension UIView {
+    func addShadow() {
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.55
+        layer.shadowOffset = CGSize(width: 0.1, height: 3.0)
+        layer.masksToBounds = false
+    }
 }

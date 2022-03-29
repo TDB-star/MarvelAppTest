@@ -146,8 +146,8 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
 
 extension ComicDetailsViewControllerDemo {
     private func button() {
-        //let topTapbarPosition = tabBarController?.tabBar.frame.minY
-        let isFavoritButton = UIButton(frame: CGRect(x: view.bounds.width - 80, y: view.bounds.height - 80, width: 50, height: 50))
+        guard let topTapbarPosition = tabBarController?.tabBar.frame.minY else { return }
+        let isFavoritButton = UIButton(frame: CGRect(x: view.bounds.width - 70, y: topTapbarPosition - 70, width: 50, height: 50))
         isFavoritButton.backgroundColor = UIColor.white
         isFavoritButton.layer.cornerRadius = 50 / 2
         isFavoritButton.layer.cornerCurve = .continuous
@@ -172,11 +172,4 @@ extension ComicDetailsViewControllerDemo {
 //        dest.viewModel = viewModel.getShoppingCatViewModel()
     }
 }
-extension UIView {
-    func addShadow() {
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0.55
-        layer.shadowOffset = CGSize(width: 0.1, height: 3.0)
-        layer.masksToBounds = false
-    }
-}
+
