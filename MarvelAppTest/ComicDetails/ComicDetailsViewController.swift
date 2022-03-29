@@ -28,7 +28,7 @@ class ComicDetailsViewControllerDemo: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupTableView()
-        
+        button()
     }
 }
 
@@ -74,7 +74,6 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         case .none:
             break
         }
-        
         return title
     }
     
@@ -127,7 +126,6 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             cell.contentConfiguration = content
             return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -146,5 +144,39 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
     }
 }
 
+extension ComicDetailsViewControllerDemo {
+    private func button() {
+        //let topTapbarPosition = tabBarController?.tabBar.frame.minY
+        let isFavoritButton = UIButton(frame: CGRect(x: view.bounds.width - 80, y: view.bounds.height - 80, width: 50, height: 50))
+        isFavoritButton.backgroundColor = UIColor.white
+        isFavoritButton.layer.cornerRadius = 50 / 2
+        isFavoritButton.layer.cornerCurve = .continuous
+        //addToCatButton.setTitle("OK", for: .normal)
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .light, scale: .small)
+        let customStar = UIImage(systemName: "star", withConfiguration: symbolConfig)
+        isFavoritButton.tintColor = .gray
+        isFavoritButton.setImage(customStar, for: .normal)
+        isFavoritButton.setTitleColor(UIColor.white, for: .normal)
+        view.addSubview(isFavoritButton)
+        isFavoritButton.addTarget(self, action: #selector(addToCatButtonPressed), for: .touchUpInside)
 
+        isFavoritButton.translatesAutoresizingMaskIntoConstraints = true
+        isFavoritButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+        isFavoritButton.addShadow()
+    }
+    
 
+    @objc func addToCatButtonPressed() {
+//        let dest = storyboard?.instantiateViewController(withIdentifier: "ShoppingCatViewController") as! ShoppingCartViewController
+//        dest.viewModel = viewModel.getShoppingCatViewModel()
+    }
+}
+extension UIView {
+    func addShadow() {
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.55
+        layer.shadowOffset = CGSize(width: 0.1, height: 3.0)
+        layer.masksToBounds = false
+    }
+}
