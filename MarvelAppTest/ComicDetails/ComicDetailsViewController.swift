@@ -198,7 +198,7 @@ extension ComicDetailsViewControllerDemo {
     
     private func setStatusForFavoriteButton(_ status: Bool) {
       logoutBarButtonItem.tintColor  = status ? .red : .gray
-      favoriteButton.tintColor = status ? .red : .gray
+      favoriteButton.tintColor = status ? .systemYellow : .gray
     }
     
     func setupnavigationBar() {

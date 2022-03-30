@@ -9,7 +9,9 @@ import UIKit
 
 private let reuseIdentifier = "CharacterListViewCell"
 
-class ComicsListCollectionViewController: UICollectionViewController, StatusDidChangeDelegate {
+class ComicsListCollectionViewController: UICollectionViewController {
+    
+    //let searchController = UISearchController()
    
     private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     private let itemsPerRow: CGFloat = 2
@@ -31,6 +33,7 @@ class ComicsListCollectionViewController: UICollectionViewController, StatusDidC
         comicsViewModel.loadComics()
         comicsViewModel.delegate = self
         ststusDidChange()
+       // navigationItem.searchController = searchController
 
     }
 
@@ -50,15 +53,12 @@ extension ComicsListCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ComicCollectionViewCell
         cell.comicViewModel = comicsViewModel.getComicCellViewModel(at: indexPath)
-        //cell.isFavoriteImageView.image =
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
         return cell
     }
     
-    func ststusDidChange() {
-        collectionView.reloadData()
-    }
+
 }
 
 // MARK: UICollectionViewDelegate
@@ -100,8 +100,13 @@ extension ComicsListCollectionViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-extension ComicsListCollectionViewController: DidFinishLoadDelegate {
+extension ComicsListCollectionViewController: DidFinishLoadDelegate, StatusDidChangeDelegate {
+    
     func didFinishLoad() {
+        collectionView.reloadData()
+    }
+    
+    func ststusDidChange() {
         collectionView.reloadData()
     }
 }

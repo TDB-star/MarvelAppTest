@@ -9,7 +9,7 @@ import UIKit
 
 class ComicCollectionViewCell: UICollectionViewCell {
    
-    
+   
     
     @IBOutlet weak var isFavorite: UIButton!
     @IBOutlet weak var comicNameLabel: UILabel!
@@ -28,9 +28,10 @@ class ComicCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         comicImageView.image = nil
+        
     }
     
     func ststusDidChange(status: Bool) {
-        isFavorite.tintColor = status ? .red : .gray
+        isFavorite.tintColor = status ? .systemYellow : .gray
     }
 }
