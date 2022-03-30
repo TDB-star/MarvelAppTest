@@ -8,7 +8,10 @@
 import UIKit
 
 class ComicCollectionViewCell: UICollectionViewCell {
+   
     
+    
+    @IBOutlet weak var isFavorite: UIButton!
     @IBOutlet weak var comicNameLabel: UILabel!
     @IBOutlet weak var comicImageView: CustomImageView!
         
@@ -18,11 +21,16 @@ class ComicCollectionViewCell: UICollectionViewCell {
             comicImageView.layer.cornerRadius = 8
             comicImageView.clipsToBounds = true
             comicImageView.fetchImage(from: comicViewModel.imageUrl)
+            ststusDidChange(status: comicViewModel.isFavorite)
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         comicImageView.image = nil
+    }
+    
+    func ststusDidChange(status: Bool) {
+        isFavorite.tintColor = status ? .red : .gray
     }
 }

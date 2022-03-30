@@ -10,11 +10,16 @@ import Foundation
 protocol ComicCellViewModelProtocol {
     var comicName: String { get }
      var imageUrl: String { get }
+    var isFavorite: Bool { get }
     
     init(comic: Comic)
 }
 
 class ComicCellViewModel: ComicCellViewModelProtocol {
+    
+    var isFavorite: Bool {
+        DataManager.shared.gatFavoritStatus(for: "\(comic.id)")
+    }
     
     var imageUrl: String {
         let url = comic.thumbnail

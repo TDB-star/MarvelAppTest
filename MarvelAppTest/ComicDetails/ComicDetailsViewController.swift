@@ -59,16 +59,10 @@ class ComicDetailsViewControllerDemo: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupTableView()
-        
-        
-        
         configureFavoriteButton()
         setupnavigationBar()
         setupUI()
-        
-        
     }
-    
 }
 
 extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDelegate {
@@ -81,8 +75,6 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         tableView.register(PhotoCarouselTableViewCell.self, forCellReuseIdentifier: PhotoCarouselTableViewCell.identifier)
         tableView.register(ComicInfoTableViewCell.self, forCellReuseIdentifier: ComicInfoTableViewCell.identifier)
         tableView.register(ComicDetailsTableViewCell.self, forCellReuseIdentifier: ComicDetailsTableViewCell.identifier)
-        //        tableView.rowHeight = AccountSummaryCell.rowHeight
-        //tableView.tableFooterView = UIView()
     
         view.addSubview(tableView)
         
@@ -93,6 +85,7 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         SectionType.allCases.count
     }
@@ -185,10 +178,9 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
 
 extension ComicDetailsViewControllerDemo {
     private func configureFavoriteButton() {
-//        guard let topTapbarPosition = tabBarController?.tabBar.frame.minY else { return }
-//        let favoriteButton = UIButton(frame: CGRect(x: view.bounds.width - 70, y: topTapbarPosition - 70, width: 50, height: 50))
-       
+        
       view.addSubview(favoriteButton)
+        
       favoriteButton.translatesAutoresizingMaskIntoConstraints = true
 
        favoriteButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]

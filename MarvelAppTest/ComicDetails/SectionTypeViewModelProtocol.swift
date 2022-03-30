@@ -7,7 +7,12 @@
 
 import Foundation
 
+protocol StatusDidChangeDelegate: AnyObject {
+    func ststusDidChange()
+}
+
 protocol SectionTypeViewModelProtocol {
+    var delegate: StatusDidChangeDelegate? { get set}
     var comicDescription: [TextObject] { get }
     var isFavorite: Bool { get }
     var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)? { get set }
@@ -22,6 +27,7 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
 
     private var comic: Comic
     
+    weak var delegate: StatusDidChangeDelegate?
     
     var isFavorite: Bool {
         get {
@@ -44,6 +50,7 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     
     func favoriteButtonPressed() {
         isFavorite.toggle()
+        delegate?.ststusDidChange()
     }
     
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol {

@@ -21,8 +21,9 @@ class PhotoGallaryCollectionViewCell: UICollectionViewCell {
         let imageView = CustomImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .green
+        imageView.backgroundColor = .secondarySystemBackground
         imageView.layer.cornerRadius = 10
+        imageView.image = UIImage(systemName: "eye")
         imageView.clipsToBounds = true
         return imageView
     }()
