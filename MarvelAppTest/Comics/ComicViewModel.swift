@@ -13,14 +13,17 @@ protocol DidFinishLoadDelegate: AnyObject {
 
 protocol ComicListViewModelProtocol {
     var delegate: DidFinishLoadDelegate? { get set}
-   
+    var comics: [Comic] { get }
+    var filteredComicsArray: [Comic] { get }
     func loadNextPage()
     func loadComics()
+    func searchComic(with title: String, completion: @escaping () -> Void)
     func getNumberOfComics() -> Int
     func getComicCellViewModel(at indexPath: IndexPath) -> ComicCellViewModelProtocol
     func getComicDetailsViewModel(at indexPath: IndexPath) -> ComicDetailsViewModelProtocol
-    
+    func getFilteredComicCellViewModel(at indexPath: IndexPath) -> ComicCellViewModelProtocol
     func getSctionTypeViewModel(at indexPath: IndexPath) -> SectionTypeViewModelProtocol
+    func getFilteredSctionTypeViewModel(at indexPath: IndexPath) -> SectionTypeViewModelProtocol
 }
 
 class ComicListViewModel: ComicListViewModelProtocol {
@@ -29,7 +32,8 @@ class ComicListViewModel: ComicListViewModelProtocol {
  
     weak var delegate: DidFinishLoadDelegate?
     
-    private var comics = [Comic]()
+    var comics = [Comic]()
+    var filteredComicsArray = [Comic]()
     
     var comicsContainer: ComicDataContainer? {
         didSet {
@@ -37,12 +41,23 @@ class ComicListViewModel: ComicListViewModelProtocol {
         }
     }
     
+    var isSearching: Bool {
+        return !(currentTitle?.isEmpty ?? true)
+    }
+    
     private let itemsPerPage: Int = 20
     private var currentPage: Int = -1
-    private var currentComic: String?
+    private var currentTitle: String?
 
     var isFirstLoad: Bool {
         return currentPage == -1
+    }
+    
+    func searchComic(with title: String, completion: @escaping () -> Void ) {
+        filteredComicsArray = comics.filter { term in
+            return term.title.lowercased().contains(title.lowercased())
+        }
+        completion()
     }
     
     func loadComics() {
@@ -67,6 +82,11 @@ class ComicListViewModel: ComicListViewModelProtocol {
         return ComicCellViewModel(comic: comic)
     }
     
+    func getFilteredComicCellViewModel(at indexPath: IndexPath) -> ComicCellViewModelProtocol {
+        let comic = filteredComicsArray[indexPath.item]
+        return ComicCellViewModel(comic: comic)
+    }
+    
     func getComicDetailsViewModel(at indexPath: IndexPath) -> ComicDetailsViewModelProtocol {
         let comic = comics[indexPath.item]
         return ComicDetailsViewModel(comic: comic)
@@ -76,17 +96,22 @@ class ComicListViewModel: ComicListViewModelProtocol {
         let comic = comics[indexPath.item]
         return SectionTypeViewModel(comic: comic)
     }
+    func getFilteredSctionTypeViewModel(at indexPath: IndexPath) -> SectionTypeViewModelProtocol {
+        let comic = filteredComicsArray[indexPath.item]
+        return SectionTypeViewModel(comic: comic)
+    }
     
-    private func loadComics(at page: Int) {
+    private func loadComics(title: String? = nil, at page: Int) {
         
         guard self.currentPage != page else {
             return
         }
         
-        MVLComicsService.shared.fetchComics(page: page) { result in
+        MVLComicsService.shared.fetchComics(title, page: page) { result in
             switch result {
             case let .success(comicsContainer):
                 self.currentPage = page
+                self.currentTitle = title
                 self.comicsContainer = comicsContainer
                 self.delegate?.didFinishLoad()
                 
@@ -98,10 +123,24 @@ class ComicListViewModel: ComicListViewModelProtocol {
     
     private func didUpdateComicsData() {
         if currentPage >= 1 {
-            comics.append(contentsOf: comicsContainer!.results )
+            comics.append(contentsOf: comicsContainer?.results ?? [] )
         } else {
-            comics = comicsContainer!.results
+            comics = comicsContainer?.results ?? []
         }
         
     }
 }
+
+let terms = ["Hello","Bye","Halo"]
+
+var filterdTerms = [String]()
+
+
+func filterContentForSearchText(searchText: String) {
+    filterdTerms = terms.filter { term in
+        return term.lowercased().contains(searchText.lowercased())
+    }
+}
+
+
+

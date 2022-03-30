@@ -27,7 +27,7 @@ class ComicCellViewModel: ComicCellViewModelProtocol {
     }
     
     var comicName: String {
-        comic.title ?? ""
+        comic.title
     }
     
     private let comic: Comic

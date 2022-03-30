@@ -23,7 +23,7 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
     private var comic: Comic
     
     var comicName: String {
-        comic.title ?? ""
+        comic.title
     }
     
     func getNumberOfPhotos() -> Int {
