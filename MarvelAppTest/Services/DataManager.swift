@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class DataManager {
     
     static let shared = DataManager()
@@ -15,11 +16,11 @@ class DataManager {
     
     private init() {}
     
-    func setFavoriteStatus(for comicName: String, with status: Bool) {
-        userDefaults.set(status, forKey: comicName)
+    func setFavoriteStatus(for comicId: String, with status: Bool) {
+        userDefaults.set(status, forKey: "\(comicId)")
     }
     
-    func gatFavoritStatus(for comicName: String) -> Bool {
-        userDefaults.bool(forKey: comicName)
+    func gatFavoritStatus(for comicId: String) -> Bool {
+        userDefaults.bool(forKey: "\(comicId)")
     }
 }

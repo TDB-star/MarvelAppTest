@@ -22,14 +22,53 @@ class ComicDetailsViewControllerDemo: UIViewController {
         return tableView
     }()
     
-    var viewModel: SectionTypeViewModelProtocol!
+    
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: view.bounds.width - 80, y: view.bounds.height - 120, width: 50, height: 50)
+        button.layer.cornerRadius = 50 / 2
+        button.setImage(setButtonImage(systemImage: "star.fill"), for: .normal)
+        button.backgroundColor = UIColor.white
+        button.addShadow()
+        button.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var logoutBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(favoriteButtonPressed))
+        
+        barButtonItem.tintColor = .gray
+        return barButtonItem
+    }()
+      
+    
+    var viewModel: SectionTypeViewModelProtocol! {
+        didSet {
+            viewModel.viewModelDidChange = { [weak self ] viewModel in
+                self?.setStatusForFavoriteButton(viewModel.isFavorite)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupTableView()
-        button()
+        
+        
+        
+        configureFavoriteButton()
+        setupnavigationBar()
+        setupUI()
+        
+        
     }
+    
 }
 
 extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDelegate {
@@ -145,31 +184,39 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
 }
 
 extension ComicDetailsViewControllerDemo {
-    private func button() {
-        guard let topTapbarPosition = tabBarController?.tabBar.frame.minY else { return }
-        let isFavoritButton = UIButton(frame: CGRect(x: view.bounds.width - 70, y: topTapbarPosition - 70, width: 50, height: 50))
-        isFavoritButton.backgroundColor = UIColor.white
-        isFavoritButton.layer.cornerRadius = 50 / 2
-        isFavoritButton.layer.cornerCurve = .continuous
-        //addToCatButton.setTitle("OK", for: .normal)
-        
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .light, scale: .small)
-        let customStar = UIImage(systemName: "star", withConfiguration: symbolConfig)
-        isFavoritButton.tintColor = .gray
-        isFavoritButton.setImage(customStar, for: .normal)
-        isFavoritButton.setTitleColor(UIColor.white, for: .normal)
-        view.addSubview(isFavoritButton)
-        isFavoritButton.addTarget(self, action: #selector(addToCatButtonPressed), for: .touchUpInside)
+    private func configureFavoriteButton() {
+//        guard let topTapbarPosition = tabBarController?.tabBar.frame.minY else { return }
+//        let favoriteButton = UIButton(frame: CGRect(x: view.bounds.width - 70, y: topTapbarPosition - 70, width: 50, height: 50))
+       
+      view.addSubview(favoriteButton)
+      favoriteButton.translatesAutoresizingMaskIntoConstraints = true
 
-        isFavoritButton.translatesAutoresizingMaskIntoConstraints = true
-        isFavoritButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
-        isFavoritButton.addShadow()
+       favoriteButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
     }
     
 
-    @objc func addToCatButtonPressed() {
-//        let dest = storyboard?.instantiateViewController(withIdentifier: "ShoppingCatViewController") as! ShoppingCartViewController
-//        dest.viewModel = viewModel.getShoppingCatViewModel()
+    @objc func favoriteButtonPressed(_ sender: UIButton) {
+        viewModel.favoriteButtonPressed()
+        print("Button pressed\(viewModel.isFavorite)")
+    }
+    
+    private func setupUI() {
+        setStatusForFavoriteButton(viewModel.isFavorite)
+    }
+    
+    private func setStatusForFavoriteButton(_ status: Bool) {
+      logoutBarButtonItem.tintColor  = status ? .red : .gray
+      favoriteButton.tintColor = status ? .red : .gray
+    }
+    
+    func setupnavigationBar() {
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
+    }
+    
+    private func setButtonImage(systemImage: String) -> UIImage? {
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .light, scale: .small)
+        let customStar = UIImage(systemName: systemImage, withConfiguration: symbolConfig)
+        return customStar
     }
 }
 

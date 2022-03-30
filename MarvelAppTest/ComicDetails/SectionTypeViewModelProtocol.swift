@@ -9,6 +9,9 @@ import Foundation
 
 protocol SectionTypeViewModelProtocol {
     var comicDescription: [TextObject] { get }
+    var isFavorite: Bool { get }
+    var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)? { get set }
+    func favoriteButtonPressed()
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol
     func getComicInfoSectionType() -> ComicDetailsViewModelProtocol
     func getComicDetailsSectionType() -> ComicDetailsViewModelProtocol
@@ -16,9 +19,20 @@ protocol SectionTypeViewModelProtocol {
 }
 
 class SectionTypeViewModel: SectionTypeViewModelProtocol {
-   
 
     private var comic: Comic
+    
+    
+    var isFavorite: Bool {
+        get {
+            DataManager.shared.gatFavoritStatus(for: "\(comic.id)")
+        } set {
+            DataManager.shared.setFavoriteStatus(for: "\(comic.id)", with: newValue)
+            viewModelDidChange?(self)
+        }
+    }
+    
+    var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)?
     
     var comicDescription: [TextObject] {
         (comic.textObjects)?.compactMap({$0}) ?? []
@@ -26,6 +40,10 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     
     required init(comic: Comic) {
         self.comic = comic
+    }
+    
+    func favoriteButtonPressed() {
+        isFavorite.toggle()
     }
     
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol {
