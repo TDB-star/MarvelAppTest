@@ -12,9 +12,7 @@ class PhotoCarouselTableViewCell: UITableViewCell {
     static let identifier = "PhotoCarouselTableViewCell"
     
     var viewModel: ComicDetailsViewModelProtocol!
-    
-//    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsViewController.configureCollectionViewLayout())
-    
+ 
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: PhotoCarouselTableViewCell.configureCollectionViewLayout())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

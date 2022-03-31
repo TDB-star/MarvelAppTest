@@ -7,20 +7,18 @@
 
 import UIKit
 
-class ComicDetailsTableViewCell: UITableViewCell {
+class ComicDetailTableViewCell: UITableViewCell {
     
-    static let identifier = "ComicDetailsTableViewCell"
+    static let identifier = "ComicDetailTableViewCell"
     
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailsTableViewCell.configureCollectionViewLayout())
+    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComicDetailTableViewCell.configureCollectionViewLayout())
     
     var viewModel: ComicDetailsViewModelProtocol!
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCollectionView()
         contentView.addSubview(collectionView)
-        //layout()
     }
     
     required init?(coder: NSCoder) {
@@ -37,20 +35,7 @@ class ComicDetailsTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.register(ComicDetailCollectionViewCell.self, forCellWithReuseIdentifier: ComicDetailCollectionViewCell.identifier)
     }
-//    private func layout() {
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.addSubview(collectionView)
-//
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-//        ])
-//    }
-    
-    
-    
+ 
     static func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
 
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -69,7 +54,7 @@ class ComicDetailsTableViewCell: UITableViewCell {
     }
 }
 
-extension ComicDetailsTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ComicDetailTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.getNumberOfComicCreators()
@@ -78,7 +63,6 @@ extension ComicDetailsTableViewCell: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicDetailCollectionViewCell.identifier, for: indexPath) as! ComicDetailCollectionViewCell
         cell.viewModel = viewModel.getComicDetailsSectionType(indexPath: indexPath)
-        
         return cell
     }
 }

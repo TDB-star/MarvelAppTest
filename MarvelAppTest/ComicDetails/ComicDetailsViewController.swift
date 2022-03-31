@@ -14,14 +14,15 @@ enum SectionType: Int, CaseIterable {
     case comicDescription
 }
 
-class ComicDetailsViewControllerDemo: UIViewController {
+class ComicDetailsViewController: UIViewController {
     
-    private let tableView: UITableView = {
+    // MARK: Variables
+    
+    private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
     
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
@@ -34,14 +35,13 @@ class ComicDetailsViewControllerDemo: UIViewController {
         return button
     }()
     
-    lazy var logoutBarButtonItem: UIBarButtonItem = {
+    private var favoriteBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(favoriteButtonPressed))
         
         barButtonItem.tintColor = .gray
         return barButtonItem
     }()
       
-    
     var viewModel: SectionTypeViewModelProtocol! {
         didSet {
             viewModel.viewModelDidChange = { [weak self ] viewModel in
@@ -49,11 +49,8 @@ class ComicDetailsViewControllerDemo: UIViewController {
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
+
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +60,9 @@ class ComicDetailsViewControllerDemo: UIViewController {
         setupnavigationBar()
         setupUI()
     }
-}
-
-extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDelegate {
-
+    
+    // MARK: Setup Views
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,8 +70,9 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(PhotoCarouselTableViewCell.self, forCellReuseIdentifier: PhotoCarouselTableViewCell.identifier)
         tableView.register(ComicInfoTableViewCell.self, forCellReuseIdentifier: ComicInfoTableViewCell.identifier)
-        tableView.register(ComicDetailsTableViewCell.self, forCellReuseIdentifier: ComicDetailsTableViewCell.identifier)
-    
+        tableView.register(ComicDetailTableViewCell.self, forCellReuseIdentifier: ComicDetailTableViewCell.identifier)
+        tableView.showsVerticalScrollIndicator = false
+        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -86,6 +83,28 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         ])
     }
     
+   private func setupnavigationBar() {
+        navigationItem.rightBarButtonItem = favoriteBarButtonItem
+    }
+    
+    private func configureFavoriteButton() {
+        
+      view.addSubview(favoriteButton)
+        
+      favoriteButton.translatesAutoresizingMaskIntoConstraints = true
+
+       favoriteButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+    }
+    
+    private func setupUI() {
+        setStatusForFavoriteButton(viewModel.isFavorite)
+    }
+}
+
+// MARK: UITableViewDataSource, UITableViewDelegate
+
+extension ComicDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         SectionType.allCases.count
     }
@@ -95,16 +114,12 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
         var title = ""
         
         switch sections {
-        case .comicPhotos:
-            title = ""
-        case .comicInfo:
-            title = ""
         case .comicDetails:
             title = "Creators:"
         case .comicDescription:
             title = "Description:"
-        case .none:
-            break
+        default:
+            title = ""
         }
         return title
     }
@@ -112,17 +127,12 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sections = SectionType(rawValue: section)
         var numberOfRows = 0
+        
         switch sections {
-        case .comicPhotos:
-            numberOfRows = 1
-        case .comicInfo:
-            numberOfRows = 1
-        case .comicDetails:
-            numberOfRows = 1
         case .comicDescription:
             numberOfRows = viewModel.comicDescription.count
-        case .none:
-            break
+        default:
+            numberOfRows = 1
         }
        return numberOfRows
     }
@@ -136,18 +146,21 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
                 fatalError()
             }
             cell.viewModel = viewModel.getPhotoSectionType()
+            cell.selectionStyle = .none
             return cell
         case .comicInfo:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicInfoTableViewCell.identifier, for: indexPath) as? ComicInfoTableViewCell else {
                 fatalError()
             }
             cell.viewModel = viewModel.getComicInfoSectionType()
+            cell.selectionStyle = .none
             return cell
         case .comicDetails:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicDetailsTableViewCell.identifier, for: indexPath) as? ComicDetailsTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ComicDetailTableViewCell.identifier, for: indexPath) as? ComicDetailTableViewCell else {
                 fatalError()
             }
             cell.viewModel = viewModel.getComicInfoSectionType()
+            cell.selectionStyle = .none
             return cell
         case .comicDescription:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -156,6 +169,7 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
             content.text = description.language
             content.secondaryText = description.text
             cell.contentConfiguration = content
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -176,33 +190,20 @@ extension ComicDetailsViewControllerDemo: UITableViewDataSource, UITableViewDele
     }
 }
 
-extension ComicDetailsViewControllerDemo {
-    private func configureFavoriteButton() {
-        
-      view.addSubview(favoriteButton)
-        
-      favoriteButton.translatesAutoresizingMaskIntoConstraints = true
-
-       favoriteButton.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
-    }
+extension ComicDetailsViewController {
     
+    // MARK: Selectors
 
     @objc func favoriteButtonPressed(_ sender: UIButton) {
         viewModel.favoriteButtonPressed()
         print("Button pressed\(viewModel.isFavorite)")
     }
     
-    private func setupUI() {
-        setStatusForFavoriteButton(viewModel.isFavorite)
-    }
+  // MARK: Helpers
     
     private func setStatusForFavoriteButton(_ status: Bool) {
-      logoutBarButtonItem.tintColor  = status ? .red : .gray
+      favoriteBarButtonItem.tintColor  = status ? .systemYellow : .gray
       favoriteButton.tintColor = status ? .systemYellow : .gray
-    }
-    
-    func setupnavigationBar() {
-        navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
     
     private func setButtonImage(systemImage: String) -> UIImage? {

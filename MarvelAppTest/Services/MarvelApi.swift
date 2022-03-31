@@ -49,7 +49,7 @@ class MVLComicsService {
     
     private init() {}
     
-    func fetchComics(_ title: String?, page: Int, completion: @escaping ComicDataContainerCompletionResult) {
+    func fetchComics(page: Int, completion: @escaping ComicDataContainerCompletionResult) {
         
         let timestamp = "\(Date().timeIntervalSince1970)"
         let hash = "\(timestamp)\(privateKey)\(apiKey)".md5Value
@@ -57,10 +57,6 @@ class MVLComicsService {
         var components = URLComponents(url: baseURL.appendingPathComponent("v1/public/comics"), resolvingAgainstBaseURL: true)
 
         var customQueryItems = [URLQueryItem]()
-
-        if let title = title {
-            customQueryItems.append(URLQueryItem(name: "title", value: title))
-        }
 
         if page > 0 {
              customQueryItems.append(URLQueryItem(name: "offset", value: "\(page * limit)"))

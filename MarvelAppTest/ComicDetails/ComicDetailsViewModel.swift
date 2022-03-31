@@ -14,7 +14,7 @@ protocol ComicDetailsViewModelProtocol {
     func getNumberOfPhotos() -> Int
     func getNumberOfComicCreators() -> Int
     func getItemPhotoGallaryCellViewModel(at indexPath: IndexPath) -> PhotoGallaryCellViewModelProtocol
-    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailsSectionTypeProtocol
+    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailSectionTypeProtocol
     init(comic: Comic)
 }
 
@@ -54,8 +54,8 @@ class ComicDetailsViewModel: ComicDetailsViewModelProtocol {
         return PhotoGallaryCellViewModel(image: photos)
     }
     
-    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailsSectionTypeProtocol {
+    func getComicDetailsSectionType(indexPath: IndexPath) -> ComicDetailSectionTypeProtocol {
         let creators = comicCreators[indexPath.item]
-        return ComicDetailsSectionType(creators: creators)
+        return ComicDetailSectionType(creators: creators)
     }
 }

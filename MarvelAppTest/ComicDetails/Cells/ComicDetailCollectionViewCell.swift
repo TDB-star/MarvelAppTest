@@ -11,7 +11,7 @@ class ComicDetailCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ComicDetailCollectionViewCell"
     
-    var viewModel: ComicDetailsSectionTypeProtocol! {
+    var viewModel: ComicDetailSectionTypeProtocol! {
         didSet {
             creatorNameLabel.text = viewModel.creatorName
             creatorRoleLabel.text = viewModel.creatorRole

@@ -11,8 +11,6 @@ class ComicInfoTableViewCell: UITableViewCell {
 
   static let identifier = "ComicInfoTableViewCell"
     
-
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +60,6 @@ class ComicInfoTableViewCell: UITableViewCell {
         }
     }
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         styleCell()
@@ -79,7 +76,6 @@ class ComicInfoTableViewCell: UITableViewCell {
         
         stackView.addArrangedSubview(publishedLabel)
         stackView.addArrangedSubview(dateLabel)
-    
     }
     
     private func layout() {

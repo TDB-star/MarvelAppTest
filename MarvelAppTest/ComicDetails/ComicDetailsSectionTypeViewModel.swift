@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol ComicDetailsSectionTypeProtocol {
+protocol ComicDetailSectionTypeProtocol {
     var creatorName: String { get }
     var creatorRole: String { get }
     init(creators: CreatorSummary)
 }
 
-class ComicDetailsSectionType: ComicDetailsSectionTypeProtocol {
+class ComicDetailSectionType: ComicDetailSectionTypeProtocol {
     
     private var creators: CreatorSummary
     
@@ -28,7 +28,4 @@ class ComicDetailsSectionType: ComicDetailsSectionTypeProtocol {
     required init(creators: CreatorSummary) {
         self.creators = creators
     }
-    
-    
-    
 }

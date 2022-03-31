@@ -38,7 +38,6 @@
 		5D2C197227EB2EDC0036BC44 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C197127EB2EDC0036BC44 /* ComicViewModel.swift */; };
 		5D2C197427EB62510036BC44 /* ComicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */; };
 		5D7D3CB127EC79F2008CCA69 /* ComicDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB027EC79F2008CCA69 /* ComicDetailsViewModel.swift */; };
-		5D7D3CB327EC7A10008CCA69 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB227EC7A10008CCA69 /* ComicDetailViewController.swift */; };
 		5D7D3CB527EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB427EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift */; };
 		5D7D3CB727EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */; };
 		5D93966327EB7DCE0006470F /* MarvelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D93966227EB7DCE0006470F /* MarvelApi.swift */; };
@@ -46,10 +45,9 @@
 		5D97498527F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */; };
 		5D97498727F0BC7A00FB7B49 /* SectionTypeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */; };
 		5D97498A27F1A87400FB7B49 /* ComicInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */; };
-		5D97498C27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */; };
+		5D97498C27F1B5D200FB7B49 /* ComicDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498B27F1B5D200FB7B49 /* ComicDetailTableViewCell.swift */; };
 		5D97498E27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */; };
 		5D97499027F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */; };
-		5D97499227F1F39500FB7B49 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97499127F1F39500FB7B49 /* TableViewCell.swift */; };
 		5D97499427F3013F00FB7B49 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97499327F3013F00FB7B49 /* DataManager.swift */; };
 		5D97499727F452A500FB7B49 /* FavoriteComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97499627F452A500FB7B49 /* FavoriteComicTableViewCell.swift */; };
 		5D97499927F4544300FB7B49 /* FavoriteConicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D97499827F4544300FB7B49 /* FavoriteConicViewController.swift */; };
@@ -89,7 +87,6 @@
 		5D2C197127EB2EDC0036BC44 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCellViewModel.swift; sourceTree = "<group>"; };
 		5D7D3CB027EC79F2008CCA69 /* ComicDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsViewModel.swift; sourceTree = "<group>"; };
-		5D7D3CB227EC7A10008CCA69 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		5D7D3CB427EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGallaryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGallaryCellViewModel.swift; sourceTree = "<group>"; };
 		5D93966227EB7DCE0006470F /* MarvelApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApi.swift; sourceTree = "<group>"; };
@@ -97,10 +94,9 @@
 		5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		5D97498627F0BC7900FB7B49 /* SectionTypeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTypeViewModelProtocol.swift; sourceTree = "<group>"; };
 		5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicInfoTableViewCell.swift; sourceTree = "<group>"; };
-		5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		5D97498B27F1B5D200FB7B49 /* ComicDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailTableViewCell.swift; sourceTree = "<group>"; };
 		5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsSectionTypeViewModel.swift; sourceTree = "<group>"; };
-		5D97499127F1F39500FB7B49 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5D97499327F3013F00FB7B49 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5D97499627F452A500FB7B49 /* FavoriteComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicTableViewCell.swift; sourceTree = "<group>"; };
 		5D97499827F4544300FB7B49 /* FavoriteConicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteConicViewController.swift; sourceTree = "<group>"; };
@@ -139,12 +135,11 @@
 				5D97499527F4524200FB7B49 /* FavoriteComic */,
 				5D2C197027EB2EB70036BC44 /* Comics */,
 				5D2C196F27EB2E580036BC44 /* ComicDetails */,
-				5D2C191F27E899030036BC44 /* SceneDelegate.swift */,
-				5D97498827F1A81100FB7B49 /* Cells */,
-				5D2C191D27E899030036BC44 /* AppDelegate.swift */,
 				5D2C194127E9F0E20036BC44 /* Helpers */,
 				5D2C194627EA3E270036BC44 /* Models */,
 				5D2C193727E89ECD0036BC44 /* Services */,
+				5D2C191D27E899030036BC44 /* AppDelegate.swift */,
+				5D2C191F27E899030036BC44 /* SceneDelegate.swift */,
 				5D2C192327E899030036BC44 /* Main.storyboard */,
 				5D2C192827E899050036BC44 /* LaunchScreen.storyboard */,
 				5D2C192627E899050036BC44 /* Assets.xcassets */,
@@ -204,8 +199,8 @@
 				5D7D3CB027EC79F2008CCA69 /* ComicDetailsViewModel.swift */,
 				5D97498F27F1D32E00FB7B49 /* ComicDetailsSectionTypeViewModel.swift */,
 				5D7D3CB627EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift */,
-				5D7D3CB227EC7A10008CCA69 /* ComicDetailViewController.swift */,
 				5D97498227F0AC8800FB7B49 /* ComicDetailsViewController.swift */,
+				5D97498827F1A81100FB7B49 /* Cells */,
 			);
 			path = ComicDetails;
 			sourceTree = "<group>";
@@ -214,8 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				5D2C197127EB2EDC0036BC44 /* ComicViewModel.swift */,
-				5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */,
 				5D2C194427EA07160036BC44 /* ComicsListCollectionViewController.swift */,
+				5D2C197327EB62510036BC44 /* ComicCellViewModel.swift */,
 				5D2C193327E89B010036BC44 /* ComicCollectionViewCell.swift */,
 			);
 			path = Comics;
@@ -227,9 +222,8 @@
 				5D97498427F0B1B800FB7B49 /* PhotoCarouselTableViewCell.swift */,
 				5D7D3CB427EDC326008CCA69 /* PhotoGallaryCollectionViewCell.swift */,
 				5D97498927F1A87400FB7B49 /* ComicInfoTableViewCell.swift */,
-				5D97498B27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift */,
+				5D97498B27F1B5D200FB7B49 /* ComicDetailTableViewCell.swift */,
 				5D97498D27F1BC2C00FB7B49 /* ComicDetailCollectionViewCell.swift */,
-				5D97499127F1F39500FB7B49 /* TableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -328,12 +322,10 @@
 				5D2C197227EB2EDC0036BC44 /* ComicViewModel.swift in Sources */,
 				5D2C196227EA55370036BC44 /* CreatorSummary.swift in Sources */,
 				5D2C195227EA4D120036BC44 /* TextObject.swift in Sources */,
-				5D97499227F1F39500FB7B49 /* TableViewCell.swift in Sources */,
 				5D2C194327E9F1050036BC44 /* Extentions.swift in Sources */,
 				5D2C191E27E899030036BC44 /* AppDelegate.swift in Sources */,
 				5D97498727F0BC7A00FB7B49 /* SectionTypeViewModelProtocol.swift in Sources */,
 				5D2C192027E899030036BC44 /* SceneDelegate.swift in Sources */,
-				5D7D3CB327EC7A10008CCA69 /* ComicDetailViewController.swift in Sources */,
 				5D2C195E27EA50DA0036BC44 /* ComicImage.swift in Sources */,
 				5D97499727F452A500FB7B49 /* FavoriteComicTableViewCell.swift in Sources */,
 				5D97498327F0AC8800FB7B49 /* ComicDetailsViewController.swift in Sources */,
@@ -353,7 +345,7 @@
 				5D2C193627E89EC70036BC44 /* NetworkAPIManager.swift in Sources */,
 				5D7D3CB727EDD6FB008CCA69 /* PhotoGallaryCellViewModel.swift in Sources */,
 				5D97499927F4544300FB7B49 /* FavoriteConicViewController.swift in Sources */,
-				5D97498C27F1B5D200FB7B49 /* ComicDetailsTableViewCell.swift in Sources */,
+				5D97498C27F1B5D200FB7B49 /* ComicDetailTableViewCell.swift in Sources */,
 				5D2C194527EA07160036BC44 /* ComicsListCollectionViewController.swift in Sources */,
 				5D2C195827EA4F830036BC44 /* ComicSummary.swift in Sources */,
 				5D2C193927E8BA030036BC44 /* DataModel.swift in Sources */,

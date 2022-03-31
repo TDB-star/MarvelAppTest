@@ -9,7 +9,7 @@ import UIKit
 
 class ComicCollectionViewCell: UICollectionViewCell {
    
-   
+   static let identifier = "ComicCollectionViewCell"
     
     @IBOutlet weak var isFavorite: UIButton!
     @IBOutlet weak var comicNameLabel: UILabel!

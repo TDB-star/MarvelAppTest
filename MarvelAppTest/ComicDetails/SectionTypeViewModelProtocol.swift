@@ -16,11 +16,11 @@ protocol SectionTypeViewModelProtocol {
     var comicDescription: [TextObject] { get }
     var isFavorite: Bool { get }
     var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)? { get set }
+    init(comic: Comic)
     func favoriteButtonPressed()
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol
     func getComicInfoSectionType() -> ComicDetailsViewModelProtocol
     func getComicDetailsSectionType() -> ComicDetailsViewModelProtocol
-    init(comic: Comic)
 }
 
 class SectionTypeViewModel: SectionTypeViewModelProtocol {
@@ -64,6 +64,4 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     func getComicDetailsSectionType() -> ComicDetailsViewModelProtocol {
         ComicDetailsViewModel(comic: comic)
     }
-    
-    
 }
