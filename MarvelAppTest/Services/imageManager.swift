@@ -32,7 +32,7 @@ class CustomImageView: UIImageView {
     
     func fetchImage(from url: String) {
         guard let imageURL = URL(string: url) else {
-            image = UIImage(systemName: "eye")
+            image = UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 50, weight: .light, scale: .medium))
             return
         }
         // Taking the image from the cache

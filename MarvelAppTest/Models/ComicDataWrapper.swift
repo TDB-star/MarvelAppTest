@@ -20,22 +20,14 @@ struct ComicDataContainer: Codable {
 }
 
 struct Comic: Codable {
-    
     let id: Int
     let title: String
     let description: String?
     let pageCount: Int?
     let textObjects: [TextObject]?
-    let resourceURI: String?
-    let urls: [Url]?
-    let series: SeriesSummary?
     let thumbnail: ComicImage
     let images: [ComicImage]
     let dates: [ComicDate]
     let creators: CreatorList?
-    let characters: CharacterList?
-    let stories: StoryList?
-    let events: EventList?
-    
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ComicImage {
+struct ComicImage: Codable {
     let path: String
     let extensionImage: String
     
@@ -20,19 +20,3 @@ struct ComicImage {
     }
 }
 
-
-extension ComicImage: Decodable {
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.path = try container.decodeIfPresent(String.self, forKey: .path) ?? ""
-        self.extensionImage = try container.decodeIfPresent(String.self, forKey: .extensionImage) ?? ""
-    }
-}
-
-extension ComicImage: Encodable {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(path, forKey: .path)
-        try container.encodeIfPresent(extensionImage, forKey: .extensionImage)
-    }
-}

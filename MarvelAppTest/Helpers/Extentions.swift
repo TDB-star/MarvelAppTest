@@ -50,6 +50,7 @@ extension Date
     }
 
 }
+
 extension Date {
   func asString(style: DateFormatter.Style) -> String {
     let dateFormatter = DateFormatter()

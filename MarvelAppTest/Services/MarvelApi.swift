@@ -7,30 +7,6 @@
 
 import Foundation
 
-//class MarvelAPI {
-//    
-//    static let shared = MarvelAPI(
-//        baseURL: URL(string: "https://gateway.marvel.com:443")!,
-//        privateKey: "a91b7da176ebca327f744add5e8208388c1b8956",
-//        apiKey: "442d93a738880f5f4d6dda5e01cb531e"
-//        
-//    )
-//
-//    lazy var comicsService: MVLComicsService = {
-//        return MVLComicsService(baseURL: baseURL, privateKey: privateKey, apiKey: apiKey)
-//    }()
-//    
-//    private let baseURL: URL
-//    private let privateKey: String
-//    private let apiKey: String
-//    
-//    init(baseURL: URL, privateKey: String, apiKey: String) {
-//        self.baseURL = baseURL
-//        self.privateKey = privateKey
-//        self.apiKey = apiKey
-//    }
-//    
-//}
 typealias ComicDataContainerCompletionResult = ((Result<ComicDataContainer, NSError>) -> Void)
 
 class MVLComicsService {
@@ -87,7 +63,6 @@ class MVLComicsService {
                 return
             }
 
-            
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             guard let comicData = try? decoder.decode(ComicDataWrapper.self, from: data) else {
