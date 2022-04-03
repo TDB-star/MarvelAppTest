@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -117,99 +116,10 @@
             </objects>
             <point key="canvasLocation" x="2265.217391304348" y="-248.4375"/>
         </scene>
-        <!--favorit-->
-        <scene sceneID="Nx3-RJ-VYx">
-            <objects>
-                <viewController id="8Oe-VL-xZW" customClass="FavoriteConicViewController" customModule="MarvelAppTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kch-6M-Esl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bvb-Lf-V6C">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritComicTableViewCell" rowHeight="170" id="W2s-KA-IQP" customClass="FavoriteComicTableViewCell" customModule="MarvelAppTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W2s-KA-IQP" id="WPX-gX-WNa">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gPO-3H-Ced">
-                                                    <rect key="frame" x="36" y="21" width="146" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="gPO-3H-Ced" secondAttribute="height" multiplier="73:64" id="4ln-LY-PLX"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb7-63-MAm">
-                                                    <rect key="frame" x="198" y="74.5" width="200" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sb7-63-MAm" firstAttribute="leading" secondItem="gPO-3H-Ced" secondAttribute="trailing" constant="16" id="1gO-F4-ZB9"/>
-                                                <constraint firstItem="gPO-3H-Ced" firstAttribute="leading" secondItem="WPX-gX-WNa" secondAttribute="leadingMargin" constant="16" id="3wU-lZ-L00"/>
-                                                <constraint firstAttribute="trailing" secondItem="sb7-63-MAm" secondAttribute="trailing" constant="16" id="7Z0-TE-ZZF"/>
-                                                <constraint firstItem="sb7-63-MAm" firstAttribute="centerY" secondItem="WPX-gX-WNa" secondAttribute="centerY" id="Lk4-L1-1PB"/>
-                                                <constraint firstItem="gPO-3H-Ced" firstAttribute="width" secondItem="WPX-gX-WNa" secondAttribute="height" multiplier="73:85" id="ZxB-Gm-tPo"/>
-                                                <constraint firstItem="gPO-3H-Ced" firstAttribute="centerY" secondItem="WPX-gX-WNa" secondAttribute="centerY" id="upe-cW-ARO"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="comicImageView" destination="gPO-3H-Ced" id="TJU-VC-UMT"/>
-                                            <outlet property="comicTitleLabel" destination="sb7-63-MAm" id="hgi-4y-N5w"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8Mk-Fs-8Re"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bvb-Lf-V6C" firstAttribute="leading" secondItem="8Mk-Fs-8Re" secondAttribute="leading" id="BKQ-6S-Ql6"/>
-                            <constraint firstAttribute="bottom" secondItem="bvb-Lf-V6C" secondAttribute="bottom" id="Ggf-pM-FHH"/>
-                            <constraint firstItem="bvb-Lf-V6C" firstAttribute="trailing" secondItem="8Mk-Fs-8Re" secondAttribute="trailing" id="ZGI-s6-Hwi"/>
-                            <constraint firstItem="bvb-Lf-V6C" firstAttribute="top" secondItem="Kch-6M-Esl" secondAttribute="top" id="wB7-fZ-LYI"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="favorit" image="star" catalog="system" id="iR1-pD-xdY"/>
-                    <connections>
-                        <outlet property="tableView" destination="bvb-Lf-V6C" id="GXO-YD-OUd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xvp-cZ-6H9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1355" y="520"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="3Ym-pA-QW1">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gVe-dw-JIx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cSw-n3-Yxn">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="8Oe-VL-xZW" kind="relationship" relationship="viewControllers" id="NgL-wB-wYL"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkD-Jl-QuE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1355.072463768116" y="-248.4375"/>
-        </scene>
     </scenes>
     <resources>
         <image name="books.vertical.circle" catalog="system" width="128" height="121"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

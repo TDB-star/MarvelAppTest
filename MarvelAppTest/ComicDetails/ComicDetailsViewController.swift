@@ -35,29 +35,20 @@ class ComicDetailsViewController: UIViewController {
         return button
     }()
     
-    private var favoriteBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(favoriteButtonPressed))
-        
-        barButtonItem.tintColor = .gray
-        return barButtonItem
-    }()
-      
-    var viewModel: SectionTypeViewModelProtocol! {
-        didSet {
-            viewModel.viewModelDidChange = { [weak self ] viewModel in
-                self?.setStatusForFavoriteButton(viewModel.isFavorite)
-            }
-        }
-    }
+    var viewModel: SectionTypeViewModelProtocol!
+
 
     // MARK: Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupTableView()
         configureFavoriteButton()
-        setupnavigationBar()
         setupUI()
     }
     
@@ -83,10 +74,6 @@ class ComicDetailsViewController: UIViewController {
         ])
     }
     
-   private func setupnavigationBar() {
-        navigationItem.rightBarButtonItem = favoriteBarButtonItem
-    }
-    
     private func configureFavoriteButton() {
         
       view.addSubview(favoriteButton)
@@ -97,7 +84,10 @@ class ComicDetailsViewController: UIViewController {
     }
     
     private func setupUI() {
-        setStatusForFavoriteButton(viewModel.isFavorite)
+        setFavoriteButton(viewModel.isFavorite.value)
+        viewModel.isFavorite.bind { [weak self] isFavorite in
+            self?.setFavoriteButton(isFavorite)
+        }
     }
 }
 
@@ -196,13 +186,11 @@ extension ComicDetailsViewController {
 
     @objc func favoriteButtonPressed(_ sender: UIButton) {
         viewModel.favoriteButtonPressed()
-        print("Button pressed\(viewModel.isFavorite)")
     }
     
   // MARK: Helpers
     
-    private func setStatusForFavoriteButton(_ status: Bool) {
-      favoriteBarButtonItem.tintColor  = status ? .systemYellow : .gray
+    private func setFavoriteButton(_ status: Bool) {
       favoriteButton.tintColor = status ? .systemYellow : .gray
     }
     

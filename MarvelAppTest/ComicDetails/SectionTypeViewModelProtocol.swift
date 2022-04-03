@@ -14,9 +14,10 @@ protocol StatusDidChangeDelegate: AnyObject {
 protocol SectionTypeViewModelProtocol {
     var delegate: StatusDidChangeDelegate? { get set}
     var comicDescription: [TextObject] { get }
-    var isFavorite: Bool { get }
-    var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)? { get set }
+    var isFavorite: Box<Bool> { get }
+
     init(comic: Comic)
+    
     func favoriteButtonPressed()
     func getPhotoSectionType() -> ComicDetailsViewModelProtocol
     func getComicInfoSectionType() -> ComicDetailsViewModelProtocol
@@ -29,16 +30,7 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     
     weak var delegate: StatusDidChangeDelegate?
     
-    var isFavorite: Bool {
-        get {
-            DataManager.shared.gatFavoritStatus(for: "\(comic.id)")
-        } set {
-            DataManager.shared.setFavoriteStatus(for: "\(comic.id)", with: newValue)
-            viewModelDidChange?(self)
-        }
-    }
-    
-    var viewModelDidChange: ((SectionTypeViewModelProtocol) -> Void)?
+    var isFavorite: Box<Bool>
     
     var comicDescription: [TextObject] {
         (comic.textObjects)?.compactMap({$0}) ?? []
@@ -46,10 +38,12 @@ class SectionTypeViewModel: SectionTypeViewModelProtocol {
     
     required init(comic: Comic) {
         self.comic = comic
+        isFavorite = Box(value: DataManager.shared.gatFavoritStatus(for: "\(comic.id)"))
     }
     
     func favoriteButtonPressed() {
-        isFavorite.toggle()
+        isFavorite.value.toggle()
+        DataManager.shared.setFavoriteStatus(for: "\(comic.id)", with: isFavorite.value)
         delegate?.ststusDidChange()
     }
     
